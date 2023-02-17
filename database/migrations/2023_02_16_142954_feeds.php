@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('feeds', function(Blueprint $table){
             $table->increments('id_feeds');
-            $table->foreignId('id_pengguna')->constrained('pengguna');
-            $table->foreignId('id_resep')->constrained('resep');
+            $table->unsignedBigInteger('id_pengguna');
+            $table->unsignedBigInteger('id_resep');
             $table->string('foto_feeds')->nullable();
             $table->string('komentar')->nullable();
             $table->string('deskripsi_feeds')->nullable();
             $table->string('nama_pengguna')->nullable();
             $table->string('nama_resep')->nullable();
+
+            // $table->foreignId('id_pengguna')->constrained('pengguna', 'id_pengguna');
+            // $table->foreignId('id_resep')->constrained('resep', 'id_resep');
         });
     }
 

@@ -14,8 +14,8 @@ return new class extends Migration
         //
         Schema::create('resep', function (Blueprint $table){
             $table->increments('id_resep');
-            $table->foreignId('id_pengguna')->constrained('pengguna');
-            $table->foreignId('id_kategori_resep')->constrained('kategori_resep');
+            $table->unsignedBigInteger('id_pengguna');
+            $table->unsignedBigInteger('id_kategori_resep');
             $table->string('nama_kategori_resep')->nullable();
             $table->string('nama_resep')->nullable();
             $table->double('harga_resep')->nullable();
@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string('jumlah_kalori')->nullable();
             $table->text('deskripsi_resep')->nullable();
             $table->string('foto_resep')->nullable();
+
+            // $table->foreign('id_pengguna')->references('id_pengguna')->on('pengguna');
+            // $table->foreign('id_kategori_resep')->references('id_kategori_resep')->on('kategori_resep');
         });
     }
 

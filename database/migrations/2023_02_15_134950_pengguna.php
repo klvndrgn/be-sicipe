@@ -14,7 +14,7 @@ return new class extends Migration
         //
         Schema::create('pengguna', function(Blueprint $table){
             $table->increments('id_pengguna');
-            $table->primary('username_pengguna');
+            $table->string('username_pengguna');
             $table->string('nama_pengguna')->nullable();
             $table->dateTime('tanggal_lahir')->nullable();
             $table->string('alamat_email')->nullable();

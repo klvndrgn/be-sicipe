@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('penarikan_saldo', function(Blueprint $table){
             $table->increments('id_penarikan_saldo');
-            $table->foreignId('id_pengguna')->constrained('pengguna');
+            $table->unsignedBigInteger('id_pengguna');
             $table->double('jumlah_penarikan')->nullable();
             $table->char('status_penarikan', 4)->nullable();
             $table->dateTime('tanggal_penarikan')->nullable();
+
+            // $table->foreignId('id_pengguna')->constrained('pengguna', 'id_pengguna');
         });
     }
 
