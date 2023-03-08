@@ -139,9 +139,9 @@ class ResepController extends Controller
     }
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-    $resep = Resep::find($id);
+    $resep = Resep::where('id_resep', $id);
 
     if ($resep) {
         $resep->delete();
