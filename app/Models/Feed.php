@@ -17,4 +17,9 @@ class Feed extends Model
         'nama_pengguna',
         'nama_resep',
     ];
+
+    protected $table = 'feeds';
+    protected $primaryKey = 'id_feeds';
+    public $timestamps = false;
+    
 }

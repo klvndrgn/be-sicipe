@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PenarikanSaldoController;
+use App\Http\Controllers\TopUpController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeedController;
@@ -35,3 +37,5 @@ Route::get('/reseps/{nama_kategori_resep}', [ResepController::class, 'showbasedk
 Route::get('/resepsaya/{id_pengguna}', [ResepController::class, 'showresepsaya'])->name('reseps.showresepsaya');
 
 
+Route::apiResource('top-up', TopUpController::class);
+Route::apiResource('penarikan-saldo', PenarikanSaldoController::class);
