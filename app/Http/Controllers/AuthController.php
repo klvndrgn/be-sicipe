@@ -51,12 +51,12 @@ class AuthController extends Controller
     {
         // validate inputs
         $rules = [
-            'username_pengguna' => 'required',
+            'alamat_email' => 'required',
             'kata_sandi' => 'required|string'
         ];
         $req->validate($rules);
         // find user email in users table
-        $pengguna = pengguna::where('username_pengguna', $req->username_pengguna)->first();
+        $pengguna = pengguna::where('alamat_email', $req->alamat_email)->first();
         // if pengguna email found and password is correct
         if ($pengguna && Hash::check($req->kata_sandi, $pengguna->kata_sandi)) {
             $token = $pengguna->createToken('Personal Access Token')->plainTextToken;
