@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\FeedController;
+use App\Http\Controllers\PenarikanSaldoController;
+use App\Http\Controllers\TopUpController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('feeds', FeedController::class);
+Route::apiResource('top-up', TopUpController::class);
+Route::apiResource('penarikan-saldo', PenarikanSaldoController::class);
