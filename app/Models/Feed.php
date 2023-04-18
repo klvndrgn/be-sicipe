@@ -16,6 +16,7 @@ class Feed extends Model
         'deskripsi_feeds',
         'nama_pengguna',
         'nama_resep',
+        'tanggal_feeds'
     ];
 
     protected $table = 'feeds';
