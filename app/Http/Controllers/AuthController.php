@@ -64,6 +64,46 @@ class AuthController extends Controller
             return response()->json($response, 200);
         }
         $response = ['message' => 'Nama Pengguna atau Password Salah'];
-        return response()->json($response, 400);
+        return response()->W($response, 400);
+    }
+
+    
+    public function editProfile(Request $request)
+    {
+        $url = url('/');
+        $id = $request->user()->id_pengguna;
+
+        $validatedData = $request->validate([
+            'username_pengguna' => 'required',
+            'tanggal_lahir' => 'required',
+            'alamat_email' => 'required',
+        ]);
+    
+        $pengguna = pengguna::find($id);
+        $pengguna->update($request->except('photo_profile'));
+
+        if($request->hasFile('photo_profile')){
+            $path = $request->file('photo_profile')->store('public/user_images');
+
+            if($path != "") {
+                $path = explode("public/", $path)[1];
+            }
+            
+            $pengguna->photo_profile = '/storage/' . $path;
+            $pengguna->save();
+        }
+    
+        if ($pengguna) {
+            $pengguna->update($validatedData);
+    
+            return response()->json([
+                'message' => 'pengguna berhasil diperbarui',
+                'data' => $pengguna
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'pengguna tidak ditemukan'
+            ], 404);
+        }
     }
 }

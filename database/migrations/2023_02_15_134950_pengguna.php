@@ -16,11 +16,12 @@ return new class extends Migration
             $table->increments('id_pengguna');
             $table->string('username_pengguna');
             $table->string('nama_pengguna')->nullable();
-            $table->dateTime('tanggal_lahir')->nullable();
+            $table->string('tanggal_lahir')->nullable();
             $table->string('alamat_email')->nullable();
             $table->string('kata_sandi')->nullable();
             $table->double('sisa_saldo')->nullable();
             $table->string('nomor_rekening')->nullable();
+            $table->string('photo_profile')->nullable();
         });
     }
 
